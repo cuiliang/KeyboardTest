@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsInput.Native;
 using Quicker.Utilities;
 
 namespace KeyboardTest
@@ -30,12 +29,34 @@ namespace KeyboardTest
             sb.Append("Any key down? ");
             sb.AppendLine(KeyboardHelper.IsAnyKeyDown().ToString());
 
-            foreach (VirtualKeyCode key in (VirtualKeyCode[]) Enum.GetValues(typeof(VirtualKeyCode)))
+            foreach (Keys key in (Keys[]) Enum.GetValues(typeof(Keys)))
             {
                 if (KeyboardHelper.IsKeyDown(key))
                 {
                     sb.AppendLine(key.ToString());
                 }
+            }
+
+            if ((Control.MouseButtons & MouseButtons.Left) != 0)
+            {
+                sb.AppendLine("Mouse: Left");
+            }
+
+            if ((Control.MouseButtons & MouseButtons.Middle) != 0)
+            {
+                sb.AppendLine("Mouse: Middle");
+            }
+            if ((Control.MouseButtons & MouseButtons.Right) != 0)
+            {
+                sb.AppendLine("Mouse: Right");
+            }
+            if ((Control.MouseButtons & MouseButtons.XButton1) != 0)
+            {
+                sb.AppendLine("Mouse: XButton1");
+            }
+            if ((Control.MouseButtons & MouseButtons.XButton2) != 0)
+            {
+                sb.AppendLine("Mouse: XButton2");
             }
 
             textBox1.Text = sb.ToString();

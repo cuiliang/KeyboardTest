@@ -6,7 +6,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Windows.Input;
-using WindowsInput.Native;
 
 namespace Quicker.Utilities
 {
@@ -82,7 +81,7 @@ namespace Quicker.Utilities
         /// <returns></returns>
         public static bool IsAnyKeyDown()
         {
-            for (int i = 7; i <= (int)VirtualKeyCode.OEM_CLEAR; i++)
+            for (int i = 7; i <= (int)Keys.OemClear; i++)
             {
                 if ((GetAsyncKeyState(i) & 0b10000000_00000000) != 0)
                 {
@@ -110,7 +109,7 @@ namespace Quicker.Utilities
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static bool IsKeyDown(VirtualKeyCode key)
+        public static bool IsKeyDown(Keys key)
         {
             return (GetAsyncKeyState((int)key) & 0b10000000_00000000) != 0;
         }
